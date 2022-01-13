@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -53,9 +54,10 @@ public class AuthSteps {
     @Then("Should see that log out page")
     public void should_see_that_log_out_page() throws InterruptedException {
         Thread.sleep(1500);
-        actor.should(
-                GivenWhenThen.seeThat(the(PaymentPage.getLastBalance(balance))
-                        , containsText(String.valueOf(balance))));
+//        actor.should(
+//                GivenWhenThen.seeThat(the(PaymentPage.getLastBalance(balance))
+//                        , containsText("Your balance is: "+balance+".00$")));
+        Ensure.that(PaymentPage.getLastBalance(balance)).isDisplayed();
     }
 
 
